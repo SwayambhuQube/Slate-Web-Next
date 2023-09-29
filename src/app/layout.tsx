@@ -1,9 +1,13 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Commissioner } from "next/font/google";
 import { Sidebar } from "@/components/common/sidebar/Sidebar";
 
-const inter = Inter({ subsets: ["latin"] });
+const commissioner = Commissioner({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-Commissioner",
+});
 
 export const metadata: Metadata = {
   title: "slate-web-next",
@@ -17,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${commissioner.variable} font-sans`}>
         <div className="flex">
           <Sidebar />
           <div>{children}</div>
