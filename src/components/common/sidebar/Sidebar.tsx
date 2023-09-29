@@ -13,7 +13,7 @@ import Link from "next/link";
 import logo from "@/media/qubeslate_min.png";
 
 export const Sidebar: React.FC = () => (
-  <div className="w-24 h-screen min-w-24 bg-[#171a1f]">
+  <div className="w-24 h-fit min-h-screen min-w-24 bg-[#171a1f]">
     <div className="h-16 bg-[#171a1f] flex justify-center items-center">
       <Image alt="qubeslate logo" src={logo} width={38} height={38} />
     </div>
