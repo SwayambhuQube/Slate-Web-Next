@@ -1,10 +1,9 @@
-import { Sidebar } from "@/components/common/sidebar/Sidebar";
-import Image from "next/image";
+import TopContainer from "@/components/common/header/TopContainer";
 
 export default function Home() {
   return (
     <>
-      <Sidebar />
+      <TopContainer title="Home" amount={0} isLoading={true} />
     </>
   );
 }
