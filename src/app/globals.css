@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --color-sidebar-text: #ffffff;
+    --color-sidebar-bg: #171a1f;
+    --color-sidebar-icon-hover: #7997f4;
+    --color-sidebar-underline: #7997f4;
+  }
+  .theme-admin {
+    --color-sidebar-text: #000000;
+    --color-sidebar-bg: #1d57ba;
+    --color-sidebar-icon-hover: #3ef61a;
+    --color-sidebar-underline: #3ef61a;
+  }
+}

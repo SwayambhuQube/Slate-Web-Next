@@ -8,6 +8,23 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      textColor: {
+        skin: {
+          "sidebar-text": "var(--color-sidebar-text)",
+          "sidebar-icon-hover": "var( --color-sidebar-icon-hover)",
+        },
+      },
+      backgroundColor: {
+        skin: {
+          "sidebar-bg": "var( --color-sidebar-bg)",
+        },
+      },
+      borderColor: {
+        skin: {
+          "sidebar-underline": "var( --color-sidebar-underline)",
+        },
+      },
+
       fontFamily: {
         sans: ["var(--font-Commissioner)"],
       },
