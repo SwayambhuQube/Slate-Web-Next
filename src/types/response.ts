@@ -1,9 +1,9 @@
 // import { IOrder } from './campaigns/orders';
-import { ISchedule } from './campaigns/schedule';
-import { IScreen } from './campaigns/screen';
-import { IShow } from './campaigns/shows';
-import { IFailureSchedule } from './failures/failuresSchedule';
-import { IFailureScreen } from './failures/failuresScreen';
+// import { ISchedule } from './campaigns/schedule';
+// import { IScreen } from './campaigns/screen';
+// import { IShow } from './campaigns/shows';
+// import { IFailureSchedule } from './failures/failuresSchedule';
+// import { IFailureScreen } from './failures/failuresScreen';
 
 export interface IOrder {
   length: number;
@@ -48,14 +48,14 @@ export interface IFilterData {
   type: string;
 }
 
-export type ISchedulesResponse = ISchedule[];
+// export type ISchedulesResponse = ISchedule[];
 
-export type IOrdersResponse = IOrder[];
+// export type IOrdersResponse = IOrder[];
 
-export type IScreensResponse = IScreen[];
+// export type IScreensResponse = IScreen[];
 
-export type IShowsResponse = IShow[];
+// export type IShowsResponse = IShow[];
 
-export type IFailureScreenResponse = IFailureScreen[];
+// export type IFailureScreenResponse = IFailureScreen[];
 
-export type IFailureScheduleResponse = IFailureSchedule[];
+// export type IFailureScheduleResponse = IFailureSchedule[];

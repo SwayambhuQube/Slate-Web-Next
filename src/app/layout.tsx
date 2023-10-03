@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Commissioner } from "next/font/google";
 import { Sidebar } from "@/components/common/sidebar/Sidebar";
+import Providers from "@/providers";
 
 const commissioner = Commissioner({
   subsets: ["latin"],
@@ -23,8 +24,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${commissioner.variable} font-sans`}>
         <div className="flex">
-          <Sidebar />
-          <div>{children}</div>
+          <Providers>
+            <Sidebar />
+            <div className="overflow-hidden">{children}</div>
+          </Providers>
         </div>
       </body>
     </html>

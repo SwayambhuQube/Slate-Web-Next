@@ -17,6 +17,7 @@ const config: Config = {
       backgroundColor: {
         skin: {
           "sidebar-bg": "var( --color-sidebar-bg)",
+          bg: "var(--color-bg)",
         },
       },
       borderColor: {

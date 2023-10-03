@@ -12,7 +12,7 @@ export const sideBarItems = [
   {
     name: "Overview",
     iconComponent: DashboardIcon,
-    href: "/",
+    href: "/Overview",
   },
   {
     name: "Approvals",
@@ -22,7 +22,7 @@ export const sideBarItems = [
   {
     name: "Campaigns",
     iconComponent: Campaign,
-    href: "/",
+    href: "/campaigns",
   },
   {
     name: "Show Failures",

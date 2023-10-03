@@ -20,7 +20,9 @@
     "date-fns": "^2.29.3",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "@reduxjs/toolkit": "^1.9.3",
+    "react-redux": "^8.0.5"
   },
   "devDependencies": {
     "@types/node": "latest",

@@ -8,11 +8,13 @@
     --color-sidebar-bg: #171a1f;
     --color-sidebar-icon-hover: #7997f4;
     --color-sidebar-underline: #7997f4;
+    --color-bg: #e6ecf0;
   }
   .theme-admin {
     --color-sidebar-text: #000000;
     --color-sidebar-bg: #1d57ba;
     --color-sidebar-icon-hover: #3ef61a;
     --color-sidebar-underline: #3ef61a;
+    --color-bg: #1c1c1c;
   }
 }
