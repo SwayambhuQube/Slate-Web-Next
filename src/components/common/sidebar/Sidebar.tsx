@@ -4,7 +4,7 @@ import logo from "@/media/qubeslate_min.png";
 import { sideBarItems } from "@/constants/SideBar/sidebarconfig";
 
 export const Sidebar: React.FC = () => (
-  <div className="w-24 h-fit min-h-screen min-w-24 bg-skin-sidebar-bg tracking-wide">
+  <div className="w-24 min-w-24 h-fit min-h-screen min-w-24 bg-skin-sidebar-bg tracking-wide">
     <div className="h-16 flex justify-center items-center">
       <Image alt="qubeslate logo" src={logo} width={38} height={38} />
     </div>

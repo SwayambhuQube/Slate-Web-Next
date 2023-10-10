@@ -22,11 +22,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${commissioner.variable} font-sans`}>
-        <div className="flex">
+      <body className={`${commissioner.variable} font-sans w-full h-full`}>
+        <div className="flex w-full h-full">
           <Providers>
             <Sidebar />
-            <div className="overflow-hidden">{children}</div>
+            <div className="min-w-[calc(100vw-96px)] h-full">{children}</div>
           </Providers>
         </div>
       </body>

@@ -1,10 +1,8 @@
-import TopContainer from "@/components/common/header/TopContainer";
+"use client";
 
-export default async function Home() {
-  return (
-    <>
-      <div className="w-fit h-fit text-center">Dashboard Page</div>
-      {/* <TopContainer title="Campaign" amount={5} isLoading={false} /> */}
-    </>
-  );
+import { Table } from "@/components/common/table/table";
+import fakeData from "@/app/mockData.json";
+
+export default function Home() {
+  return <Table data={fakeData} />;
 }

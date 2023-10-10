@@ -25,6 +25,11 @@ const config: Config = {
           "sidebar-underline": "var( --color-sidebar-underline)",
         },
       },
+      fill: {
+        skin: {
+          color: "var(--color-fill)",
+        },
+      },
 
       fontFamily: {
         sans: ["var(--font-Commissioner)"],
