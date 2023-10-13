@@ -1,41 +1,14 @@
 "use client";
 
-import { Table } from "@/components/common/table/table";
+import { PaginationProps, Table } from "@/components/common/table/table";
 import fakeData from "@/app/mockData.json";
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { Column } from "react-table";
 
-function SelectColumnFilter({
-  column: { filterValue, setFilter, preFilteredRows, id },
-}: any) {
-  // Calculate the options for filtering
-  // using the preFilteredRows
-  const options = useMemo(() => {
-    const options: any = new Set();
-    preFilteredRows.forEach((row: any) => {
-      options.add(row.values[id]);
-    });
-    return [...options.values()];
-  }, [id, preFilteredRows]);
-
-  // Render a multi-select box
-  return (
-    <select
-      value={filterValue}
-      onChange={(e) => {
-        setFilter(e.target.value || undefined);
-      }}
-    >
-      <option value="">All</option>
-      {options.map((option, i) => (
-        <option key={i} value={option}>
-          {option}
-        </option>
-      ))}
-    </select>
-  );
-}
 export default function Home() {
+  const onGetPaginationControls = (row: PaginationProps) => {
+    console.log(row);
+  };
   const columns = useMemo(
     () => [
       {
@@ -57,8 +30,6 @@ export default function Home() {
       {
         Header: "Gender",
         accessor: "gender",
-        Filter: SelectColumnFilter,
-        filter: "includes",
       },
       {
         Header: "University",
@@ -67,12 +38,15 @@ export default function Home() {
     ],
     []
   );
-  const getData = async () => {
-    setTimeout(() => {
-      return fakeData;
-    }, 3000);
-  };
   return (
-    <Table data={fakeData} columns={columns as Column<Object>[]} sortable />
+    <Table
+      data={fakeData}
+      columns={columns as Column<Object>[]}
+      sortable
+      // onRowClick={onRowClickhandle}
+      pageIndex={1}
+      pageSize={30}
+      getPaginationControls={onGetPaginationControls}
+    />
   );
 }
