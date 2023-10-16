@@ -1,13 +1,23 @@
 "use client";
 
-import { PaginationProps, Table } from "@/components/common/table/table";
 import fakeData from "@/app/mockData.json";
-import { useCallback, useMemo } from "react";
+import {
+  ColumnProps,
+  PaginationProps,
+  Table,
+} from "@/components/common/table/table";
+import { useMemo } from "react";
 import { Column } from "react-table";
 
 export default function Home() {
   const onGetPaginationControls = (row: PaginationProps) => {
     console.log(row);
+  };
+  const onRowClickhandle = (e: any) => {
+    console.log("Row Clicked", e);
+  };
+  const onCellClickhandle = (e: any) => {
+    console.log("Cell Clicked", e);
   };
   const columns = useMemo(
     () => [
@@ -22,6 +32,7 @@ export default function Home() {
       {
         Header: "Last Name",
         accessor: "last_name",
+        isSearchable: true,
       },
       {
         Header: "Email",
@@ -41,9 +52,10 @@ export default function Home() {
   return (
     <Table
       data={fakeData}
-      columns={columns as Column<Object>[]}
+      columns={columns as Column<ColumnProps>[]}
       sortable
-      // onRowClick={onRowClickhandle}
+      onRowClick={onRowClickhandle}
+      onCellClick={onCellClickhandle}
       pageIndex={1}
       pageSize={30}
       getPaginationControls={onGetPaginationControls}

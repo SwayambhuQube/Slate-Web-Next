@@ -60,6 +60,7 @@ const TableNavigationWrapper: React.FC<ILocalization> = ({
         borderBottom: "2px solid rgb(217, 221, 226)",
         alignItems: "center",
       }}
+      className="flex justify-between items-center "
     >
       <LocalizationProvider
         dateAdapter={AdapterDateFns}

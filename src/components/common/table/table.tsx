@@ -15,20 +15,26 @@ export interface PaginationProps {
   canNextPage: boolean;
   pageCount: number;
 }
+export interface ColumnProps {
+  Headers: any;
+  accessor: string;
+  isSearchable?: boolean;
+}
 interface TableProps {
   data: Object[];
-  columns: Column<Object>[];
+  columns: Column<ColumnProps>[];
   sortable?: boolean;
   loading?: boolean;
   resizable?: boolean;
   loadingComponent?: React.ReactNode;
   EmptyState?: React.ReactNode;
-  onRowClick?: (row: any) => void;
   hasFooter?: boolean;
   footerComponent?: React.ReactNode;
+  onRowClick?: (row: any) => void;
+  onCellClick?: (cell: any) => void;
   pageSize?: number;
   pageIndex?: number;
-  getPaginationControls?: ({}: PaginationProps) => void;
+  getPaginationControls?: (paginationData: PaginationProps) => void;
 }
 export const Table = ({
   data,
@@ -44,6 +50,7 @@ export const Table = ({
   pageSize = 10,
   pageIndex = 0,
   getPaginationControls,
+  onCellClick,
 }: TableProps) => {
   const defaultColumn = useMemo(
     () => ({
@@ -66,7 +73,7 @@ export const Table = ({
     setPageSize,
   }: any = useTable(
     {
-      columns,
+      columns: columns as Column<Object>[],
       data,
       defaultColumn,
     },
@@ -209,7 +216,16 @@ export const Table = ({
                           <div
                             {...cell.getCellProps()}
                             key={`${i}${j}`}
-                            className=" px-3 py-4 select-text overflow-hidden text-ellipsis border-solid border-b-[1px] border-[#cfdce6] w-full "
+                            className={`${
+                              cell.column.isSearchable
+                                ? "hover:underline text-[#0a5ecc] "
+                                : ""
+                            }px-3 py-4 select-text overflow-hidden text-ellipsis border-solid border-b-[1px] border-[#cfdce6] w-full `}
+                            onClick={(e) => {
+                              if (!cell.column.isSearchable) return;
+                              onCellClick && onCellClick(cell);
+                              e.stopPropagation();
+                            }}
                           >
                             <React.Suspense fallback={loadingComponent}>
                               {loading ? loadingComponent : cell.render("Cell")}

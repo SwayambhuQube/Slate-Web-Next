@@ -13,7 +13,7 @@ const TopContainer: React.FC<IExpandableTable> = ({
 }) => (
   <div className="bg-white h-16 flex items-center justify-between mb-4 pt-1">
     <div className="ml-5 flex items-center gap-2">
-      <span className="font-semibold text-2xl flex justify-center items-center gap-2.5 tracking-tight">
+      <span className="font-normal text-2xl flex justify-center items-center gap-2.5 tracking-tight">
         {title}{" "}
         <span className="flex items-center gap-2 bg-skin-bg rounded-3xl w-auto h-8 font-normal text-lg leading-6 pl-2 pr-2 ">
           {isLoading ? "Loading..." : amount}

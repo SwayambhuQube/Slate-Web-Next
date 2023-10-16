@@ -7,8 +7,8 @@
 }
 @layer base {
   :root {
-    --color-sidebar-text: #ffffff;
-    --color-sidebar-bg: #171a1f;
+    --color-sidebar-text: #cfdce6;
+    --color-sidebar-bg: #2d3540;
     --color-sidebar-icon-hover: #7997f4;
     --color-sidebar-underline: #7997f4;
     --color-bg: #e6ecf0;
