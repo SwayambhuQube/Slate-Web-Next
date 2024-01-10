@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import logo from "@/media/qubeslate_min.png";
+import { SlateLogoSmall } from "@/assets";
 import { sideBarItems } from "@/constants/SideBar/sidebarconfig";
 
 export const Sidebar: React.FC = () => (
   <div className="w-24 min-w-24 h-fit min-h-screen min-w-24 bg-skin-sidebar-bg tracking-wide">
     <div className="h-16 flex justify-center items-center">
-      <Image alt="qubeslate logo" src={logo} width={38} height={38} />
+      <Image alt="qubeslate logo" src={SlateLogoSmall} width={38} height={38} />
     </div>
     <hr className="h-0 border-solid border-1 border-skin-sidebar-underline m-2" />
     <div className="flex flex-col justify-around items-center gap-5 py-1 text-skin-sidebar-text  ">

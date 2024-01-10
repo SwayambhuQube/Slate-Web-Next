@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-Commissioner)"],
+      },
       textColor: {
         skin: {
           "sidebar-text": "var(--color-sidebar-text)",
@@ -31,9 +34,6 @@ const config: Config = {
         },
       },
 
-      fontFamily: {
-        sans: ["var(--font-Commissioner)"],
-      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
