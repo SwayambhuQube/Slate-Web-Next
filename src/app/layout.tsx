@@ -1,9 +1,8 @@
-import "./(appLayout)/globals.css";
+import { cn } from "@/lib/utils";
+import Providers from "@/providers";
 import type { Metadata } from "next";
 import { Commissioner } from "next/font/google";
-import { Sidebar } from "@/components/common/sidebar/Sidebar";
-import Providers from "@/providers";
-import { headers } from "next/headers";
+import "./(appLayout)/globals.css";
 
 const commissioner = Commissioner({
   subsets: ["latin"],
@@ -23,7 +22,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${commissioner.variable} font-sans w-full h-full`}>
+      <body
+        className={cn(
+          "w-full h-full bg-background font-commissioner antialiased",
+          commissioner.variable
+        )}
+      >
         <div className="flex w-full h-full">
           <Providers>{children}</Providers>
         </div>

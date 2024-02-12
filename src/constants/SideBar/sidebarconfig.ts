@@ -2,66 +2,61 @@ import { BroadcastOnHomeRounded, Campaign } from "@mui/icons-material";
 import ArticleIcon from "@mui/icons-material/Article";
 import BusinessIcon from "@mui/icons-material/Business";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import FactCheckIcon from "@mui/icons-material/FactCheck";
 import FolderCopyIcon from "@mui/icons-material/FolderCopy";
-import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import SmartDisplayIcon from "@mui/icons-material/SmartDisplay";
-import StorageIcon from "@mui/icons-material/Storage";
-import SummarizeIcon from "@mui/icons-material/Summarize";
 export const sideBarItems = [
   {
-    name: "Overview",
+    name: "Schedules",
     iconComponent: DashboardIcon,
-    href: "/Overview",
+    href: "/schedules",
+    dropdownItems: ["Schedule Orders"],
   },
   {
-    name: "Approvals",
-    iconComponent: FactCheckIcon,
-    href: "/",
+    name: "Compositions",
+    iconComponent: SmartDisplayIcon,
+    href: "/composition",
+    dropdownItems: ["Compositions"],
   },
   {
     name: "Campaigns",
     iconComponent: Campaign,
     href: "/campaigns",
+    dropdownItems: ["Campaigns"],
   },
   {
-    name: "Show Failures",
+    name: "Approval",
     iconComponent: BroadcastOnHomeRounded,
-    href: "/",
+    href: "/approval",
+    dropdownItems: ["Campaign Approvals", "Brand Verifications"],
   },
   {
     name: "Content",
     iconComponent: SmartDisplayIcon,
-    href: "/",
-  },
-  {
-    name: "Companies",
-    iconComponent: BusinessIcon,
-    href: "/",
+    href: "/content",
+    dropdownItems: ["Unmapped CPLs", "Content", "Archived Content"],
   },
   {
     name: "Inventory",
-    iconComponent: StorageIcon,
-    href: "/",
+    iconComponent: BusinessIcon,
+    href: "/inventory",
+    dropdownItems: ["Theaters/Screen", "Playlist Templates"],
+  },
+  {
+    name: "Companies",
+    iconComponent: FolderCopyIcon,
+    href: "/companies",
+    dropdownItems: ["Sellers", "Buyers"],
   },
   {
     name: "Catalogue",
     iconComponent: FolderCopyIcon,
-    href: "/",
+    href: "/catalogue",
+    dropdownItems: ["Brands", "Movies"],
   },
   {
-    name: "Play Logs",
+    name: "Other",
     iconComponent: ArticleIcon,
-    href: "/",
-  },
-  {
-    name: "Reports",
-    iconComponent: SummarizeIcon,
-    href: "/",
-  },
-  {
-    name: "Lists",
-    iconComponent: FormatListBulletedIcon,
-    href: "/",
+    href: "/other",
+    dropdownItems: ["Lists"],
   },
 ];

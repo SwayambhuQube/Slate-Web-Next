@@ -1,4 +1,4 @@
-import { SlateLogo } from "@/assets";
+import { SlateLogo } from "../../../public/assets";
 import Image from "next/image";
 
 export default function LoginLayout({

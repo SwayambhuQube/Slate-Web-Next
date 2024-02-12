@@ -5,9 +5,9 @@ export default function AppRootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <div className="flex">
       <Sidebar />
-      <div className="min-w-[calc(100vw-96px)] h-full">{children}</div>
-    </>
+      <div className="w-fit h-full">{children}</div>
+    </div>
   );
 }

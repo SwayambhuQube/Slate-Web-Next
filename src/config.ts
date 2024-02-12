@@ -27,8 +27,7 @@ const setCommonStagingConfig = () => {
   MOCK_SERVER_URL = "https://slate-mock-server.herokuapp.com/api/v1";
 };
 
-const env =
-  process.env.REACT_APP_ENV || process.env.STORYBOOK_REACT_APP_ENV || "local";
+const env = process.env.REACT_APP_ENV || process.env.STORYBOOK_REACT_APP_ENV;
 
 switch (env) {
   case "local":
