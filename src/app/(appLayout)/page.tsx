@@ -6,7 +6,6 @@ interface Props {
 
 const MyComponent: React.FC<Props> = (props) => {
   // Implement your component logic here
-  cons;
   return <div>{"Hi"}</div>;
 };
 
