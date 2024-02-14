@@ -4,13 +4,15 @@ import {
   SlateLogoSmall,
   QubeLogoSmall,
 } from "../../../../public/assets";
-import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import PushPinIcon from "@mui/icons-material/PushPin";
-import PrivacyTipIcon from "@mui/icons-material/PrivacyTip";
-import ArticleIcon from "@mui/icons-material/Article";
-import InfoIcon from "@mui/icons-material/Info";
+import {
+  Pin,
+  Headphones,
+  Info,
+  ShieldAlert,
+  FileStack,
+  LogOut,
+  ChevronUp,
+} from "lucide-react";
 import { sideBarItems } from "@/constants/SideBar/sidebarconfig";
 import Image from "next/image";
 import Link from "next/link";
@@ -40,12 +42,12 @@ const InfoConfig = [
   {
     link: "https://www.qubecinema.com/privacy-policy",
     name: "Privacy policy",
-    icon: <PrivacyTipIcon />,
+    icon: <ShieldAlert />,
   },
   {
     link: "https://www.qubecinema.com/terms-use",
     name: "Terms of Service",
-    icon: <ArticleIcon />,
+    icon: <FileStack />,
   },
 ];
 export const Sidebar: React.FC = () => {
@@ -97,9 +99,9 @@ export const Sidebar: React.FC = () => {
               <Accordion key={i} type="single" collapsible className=" w-full">
                 <AccordionItem value="item-1">
                   <AccordionTrigger className="mx-2">
-                    <div className="mx-2  font-semibold text-sm leading-5">
-                      <item.iconComponent className="mx-2 mb-1 scale-75" />
-                      {item.name}
+                    <div className="mx-2 flex font-semibold text-sm leading-5">
+                      <item.iconComponent className="mx-2 scale-75" />
+                      <div>{item.name}</div>
                     </div>
                   </AccordionTrigger>
                   {item.dropdownItems &&
@@ -129,12 +131,12 @@ export const Sidebar: React.FC = () => {
             {sideBarItems.map((item) => (
               <Link href={item.href} key={item.name}>
                 <li className="flex flex-col justify-center items-center py-1 text-[12px] w-full my-4 mx">
-                  <div className="h-6 w-6 scale-75">
+                  <div className="scale-75">
                     <item.iconComponent />
                   </div>
-                  <span className="font-normal text-sm leading-5">
+                  <div className="font-normal text-sm leading-5">
                     {item.name}
-                  </span>
+                  </div>
                 </li>
               </Link>
             ))}
@@ -150,9 +152,9 @@ export const Sidebar: React.FC = () => {
               {onHover && (
                 <div
                   onClick={() => setIsPinned((p) => (p ? false : true))}
-                  className="flex justify-center items-center mx-2  rounded-sm bg-primary h-10 w-14 p-1"
+                  className="flex justify-center items-center mx-2  rounded-sm  h-10 w-14 p-1"
                 >
-                  <PushPinIcon
+                  <Pin
                     className={
                       isPinned ? "cursor-pointer" : "cursor-pointer rotate-45"
                     }
@@ -181,15 +183,12 @@ export const Sidebar: React.FC = () => {
               {onHover && (
                 <Popover>
                   <PopoverTrigger>
-                    <KeyboardArrowUpIcon />
+                    <ChevronUp size={"20"} className="opacity-50" />
                   </PopoverTrigger>
-                  <PopoverContent className=" h-14 w-32 text-center bg-transparent border-0 shadow-none">
-                    <Button
-                      variant={"destructive"}
-                      className="text-navbarForeground font-semibold"
-                    >
+                  <PopoverContent className=" h-fit w-fit p-0 m-1 text-center border-0 shadow-none">
+                    <Button variant={"ghost"} className="font-semibold">
                       Sign Out
-                      <ExitToAppIcon className="h-4 w-4 mx-2" />
+                      <LogOut className="h-4 w-4 mx-2" />
                     </Button>
                   </PopoverContent>
                 </Popover>
@@ -201,20 +200,20 @@ export const Sidebar: React.FC = () => {
                 size={"sm"}
                 className="text-navbarForeground"
               >
-                <HeadsetMicIcon className="mx-2" />
+                <Headphones className="mx-2" />
                 Help
               </Button>
               {onHover && (
                 <Popover>
-                  <PopoverTrigger>
-                    <InfoIcon className="mx" />
-                    info
+                  <PopoverTrigger className="flex mt-2">
+                    <Info className="mx-1" />
+                    <div>info</div>
                   </PopoverTrigger>
                   <PopoverContent className="flex flex-col justify-start text-start w-fit h-fit p-0 border-0">
                     {InfoConfig.map((icon, i) => (
                       <Button
                         variant={"default"}
-                        className="text-navbarForeground font-semibold rounded-none"
+                        className="text-navbarForeground font-semibold rounded-none "
                         key={i}
                       >
                         {icon.icon}
