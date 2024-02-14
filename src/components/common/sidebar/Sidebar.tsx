@@ -98,7 +98,7 @@ export const Sidebar: React.FC = () => {
                 <AccordionItem value="item-1">
                   <AccordionTrigger className="mx-2">
                     <div className="mx-2  font-semibold text-sm leading-5">
-                      <item.iconComponent className="mx-2 scale-75" />
+                      <item.iconComponent className="mx-2 mb-1 scale-75" />
                       {item.name}
                     </div>
                   </AccordionTrigger>

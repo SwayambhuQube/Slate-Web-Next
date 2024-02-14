@@ -21,11 +21,12 @@
     "lodash": "^4.17.21",
     "lucide-react": "^0.312.0",
     "next": "latest",
+    "next-themes": "^0.2.1",
     "react": "latest",
     "react-dom": "latest",
-    "react-hot-toast": "^2.4.1",
     "react-redux": "^8.0.5",
     "react-table": "^7.8.0",
+    "sonner": "^1.4.0",
     "tailwind-merge": "^2.2.0",
     "tailwindcss-animate": "^1.0.7"
   },

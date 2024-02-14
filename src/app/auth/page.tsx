@@ -3,7 +3,7 @@
 import { createQueryObject } from "@/utils/queryString";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import toast from "react-hot-toast";
+import { toast } from "sonner";
 
 export default function Auth() {
   const router = useRouter();
