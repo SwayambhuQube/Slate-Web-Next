@@ -110,13 +110,15 @@ export const Sidebar: React.FC = () => {
                         className="mx-4 font-normal text-sm leading-5 "
                         key={i}
                       >
-                        <Button
-                          variant={"ghost"}
-                          size={"sm"}
-                          className="w-full justify-start"
-                        >
-                          {item}
-                        </Button>
+                        <Link href={item.href}>
+                          <Button
+                            variant={"ghost"}
+                            size={"sm"}
+                            className="w-full justify-start"
+                          >
+                            {item.name}
+                          </Button>
+                        </Link>
                       </AccordionContent>
                     ))}
                 </AccordionItem>
