@@ -1,4 +1,5 @@
 import { Sidebar } from "@/components/common/sidebar/Sidebar";
+import { SignOut } from "@/components/common/sidebar/Signout";
 export default function AppRootLayout({
   children,
 }: {
@@ -6,7 +7,9 @@ export default function AppRootLayout({
 }) {
   return (
     <div className="flex">
-      <Sidebar />
+      <Sidebar>
+        <SignOut />
+      </Sidebar>
       <div className="w-fit h-full">{children}</div>
     </div>
   );

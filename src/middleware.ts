@@ -1,9 +1,9 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { NextRequest } from "next/server";
+import { updateSession } from "./lib";
 
-export function middleware(request: NextRequest) {
-  // return NextResponse.next();
+export async function middleware(request: NextRequest) {
+  return await updateSession(request);
 }
 export const config = {
-  matcher: "/auth/:path*",
+  matcher: ["/((?!api|_next/static|_next/image|login|auth|.*\\.png$).*)"],
 };

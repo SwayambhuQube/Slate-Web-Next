@@ -1,6 +1,10 @@
 {
   "extends": ["next/core-web-vitals", "prettier"],
   "rules": {
-    "no-console": "error"
+    "no-console": "error",
+    "camelcase": "error",
+    "no-duplicate-imports": "error",
+    "no-alert": "error",
+    "eqeqeq": "error"
   }
 }

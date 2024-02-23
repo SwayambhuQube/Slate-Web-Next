@@ -1,23 +1,5 @@
 "use client";
 import {
-  SlateLogo,
-  SlateLogoSmall,
-  QubeLogoSmall,
-} from "../../../../public/assets";
-import {
-  Pin,
-  Headphones,
-  Info,
-  ShieldAlert,
-  FileStack,
-  LogOut,
-  ChevronUp,
-} from "lucide-react";
-import { sideBarItems } from "@/constants/SideBar/sidebarconfig";
-import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
-import {
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -27,9 +9,26 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
   Popover,
-  PopoverTrigger,
   PopoverContent,
+  PopoverTrigger,
 } from "@/components/ui/popover";
+import { sideBarItems } from "@/constants/SideBar/sidebarconfig";
+import {
+  ChevronUp,
+  FileStack,
+  Headphones,
+  Info,
+  Pin,
+  ShieldAlert,
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+import {
+  QubeLogoSmall,
+  SlateLogo,
+  SlateLogoSmall,
+} from "../../../../public/assets";
 
 const InfoConfig = [
   {
@@ -50,7 +49,10 @@ const InfoConfig = [
     icon: <FileStack />,
   },
 ];
-export const Sidebar: React.FC = () => {
+interface Isidebar {
+  children: React.ReactNode;
+}
+export const Sidebar: React.FC<Isidebar> = ({ children }) => {
   const [onHover, setOnHover] = useState(false);
   const [isPinned, setIsPinned] = useState(false);
 
@@ -188,10 +190,7 @@ export const Sidebar: React.FC = () => {
                     <ChevronUp size={"20"} className="opacity-50" />
                   </PopoverTrigger>
                   <PopoverContent className=" h-fit w-fit p-0 m-1 text-center border-0 shadow-none">
-                    <Button variant={"ghost"} className="font-semibold">
-                      Sign Out
-                      <LogOut className="h-4 w-4 mx-2" />
-                    </Button>
+                    {children}
                   </PopoverContent>
                 </Popover>
               )}
