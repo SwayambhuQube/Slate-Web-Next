@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 import { createQueryString } from "@/utils/queryString";
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 const QA_CLIENT_ID = "7079f5e5754c4471aa01b09e81675335";
@@ -17,6 +18,10 @@ export async function login(redirect: (url: string) => void) {
   redirect(url);
 }
 export default function Login() {
+  // const token = cookies().get("access_token")?.value;
+  // if (token) {
+  //   redirect(`/auth?access_token=${token}`);
+  // }
   return (
     <form
       action={async () => {

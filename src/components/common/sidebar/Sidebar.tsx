@@ -13,6 +13,9 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { sideBarItems } from "@/constants/SideBar/sidebarconfig";
+import { useSlateDispatch, useSlateSelector } from "@/store/hooks";
+import { isEmpty } from "lodash";
+import { assign } from "@/store/features/userSlice";
 import {
   ChevronUp,
   FileStack,
@@ -23,7 +26,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   QubeLogoSmall,
   SlateLogo,
@@ -52,9 +55,11 @@ const InfoConfig = [
 interface Isidebar {
   children: React.ReactNode;
 }
-export const Sidebar: React.FC<Isidebar> = ({ children }) => {
+export const Sidebar: React.FC<Isidebar> = ({ children, ...props }) => {
   const [onHover, setOnHover] = useState(false);
+  const dispatch = useSlateDispatch();
   const [isPinned, setIsPinned] = useState(false);
+  const user = useSlateSelector((state) => state.user.value);
 
   const handleMouseEnter = () => {
     setOnHover(true);
@@ -62,6 +67,17 @@ export const Sidebar: React.FC<Isidebar> = ({ children }) => {
   const handleMouseLeave = () => {
     if (!isPinned) setOnHover(false);
   };
+
+  useEffect(() => {
+    const dispatchUserDataToStore = async () => {
+      if (isEmpty(user)) {
+        const user = await fetch("api/validateUser");
+        const userData = await user.json();
+        dispatch(assign(userData.data));
+      }
+    };
+    dispatchUserDataToStore();
+  }, []);
 
   return (
     <div
@@ -173,13 +189,17 @@ export const Sidebar: React.FC<Isidebar> = ({ children }) => {
                 {!onHover && (
                   <Avatar>
                     <AvatarFallback className="bg-navbar border border-solid border-border  text-navbarForeground">
-                      SPP
+                      {!isEmpty(user)
+                        ? user.user?.firstName[0] + user.user?.lastName[0]
+                        : ""}
                     </AvatarFallback>
                   </Avatar>
                 )}
                 {onHover && (
                   <div className="flex flex-col">
-                    <div className="font-semibold">Swayambhu</div>
+                    <div className="font-semibold">
+                      {!isEmpty(user) ? user.user?.firstName : ""}
+                    </div>
                     <div className="text-xs">Qube Cinema .inc</div>
                   </div>
                 )}

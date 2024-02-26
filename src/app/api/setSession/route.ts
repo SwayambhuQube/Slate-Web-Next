@@ -9,9 +9,8 @@ export async function POST(request: NextRequest) {
   const allCookies = cookies();
   try {
     const user = await validateToken(data.access_token);
-    const isToken = !!allCookies.get("access_token")?.value;
-    if (!!user && !isEmpty(user) && !isToken) {
-      refreshSession(data);
+    if (!!user && !isEmpty(user)) {
+      await refreshSession(data);
       return NextResponse.json({ data: user });
     } else {
       logout();

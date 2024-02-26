@@ -1,3 +1,8 @@
+/**
+ * Creates a query string from an object of key-value pairs.
+ * @param object - The object containing the key-value pairs.
+ * @returns The generated query string.
+ */
 export const createQueryString = (object: Record<string, string>) => {
   let returnParams = "";
   const params = new URLSearchParams();
@@ -9,6 +14,11 @@ export const createQueryString = (object: Record<string, string>) => {
   return returnParams;
 };
 
+/**
+ * Creates a query object from a query string.
+ * @param queryString - The query string to parse.
+ * @returns An object representing the key-value pairs in the query string.
+ */
 export const createQueryObject = (queryString: string) => {
   const params = new URLSearchParams(queryString);
   const object: Record<string, string> = {};

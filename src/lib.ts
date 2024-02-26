@@ -27,7 +27,10 @@ export async function logout() {
  * @param call - The object used to set the cookies. Defaults to the `cookies()` function.
  * @returns {Promise<void>} - A promise that resolves when the session is refreshed.
  */
-export async function refreshSession(data: any, call: any = cookies()) {
+export async function refreshSession(
+  data: any,
+  call: any = cookies()
+): Promise<void> {
   const expires = new Date(Date.now() + 900 * 1000);
   const revalidationExpires = new Date(Date.now() + 600 * 1000);
 
