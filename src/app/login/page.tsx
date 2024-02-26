@@ -1,11 +1,7 @@
 /* eslint-disable camelcase */
+import { QA_BASE_URL, QA_CLIENT_ID, QA_PRODUCT_ID } from "@/config";
 import { createQueryString } from "@/utils/queryString";
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-
-const QA_CLIENT_ID = "7079f5e5754c4471aa01b09e81675335";
-const QA_PRODUCT_ID = "e742fd40-86c4-4d65-9b62-9db7f75e365f";
-const QA_BASE_URL = "https://account.staging.qube.in/";
 
 export async function login(redirect: (url: string) => void) {
   const url = `${QA_BASE_URL}dialog/authorize?${createQueryString({
@@ -18,10 +14,6 @@ export async function login(redirect: (url: string) => void) {
   redirect(url);
 }
 export default function Login() {
-  // const token = cookies().get("access_token")?.value;
-  // if (token) {
-  //   redirect(`/auth?access_token=${token}`);
-  // }
   return (
     <form
       action={async () => {

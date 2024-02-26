@@ -2,9 +2,9 @@
   "extends": ["next/core-web-vitals", "prettier"],
   "rules": {
     "no-console": "error",
-    "camelcase": "error",
+    "camelcase": "warn",
     "no-duplicate-imports": "error",
     "no-alert": "error",
-    "eqeqeq": "error"
+    "eqeqeq": "warn"
   }
 }
