@@ -31,6 +31,7 @@ const config = {
 
         navbar: "hsl(var(--navbar))",
         navbarForeground: "hsl(var(--navbar-foreground))",
+        navbarHighlight: "hsl(var(--navbar-highlight))",
 
         qube: "hsl(var(--qube))",
 

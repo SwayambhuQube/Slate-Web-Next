@@ -57,9 +57,10 @@ interface Isidebar {
 }
 export const Sidebar: React.FC<Isidebar> = ({ children, ...props }) => {
   const [onHover, setOnHover] = useState(false);
-  const dispatch = useSlateDispatch();
   const [isPinned, setIsPinned] = useState(false);
+  const [activeRoute, setActiveRoute] = useState("/");
   const user = useSlateSelector((state) => state.user.value);
+  const dispatch = useSlateDispatch();
 
   const handleMouseEnter = () => {
     setOnHover(true);
@@ -116,23 +117,32 @@ export const Sidebar: React.FC<Isidebar> = ({ children, ...props }) => {
             {sideBarItems.map((item, i) => (
               <Accordion key={i} type="single" collapsible className=" w-full">
                 <AccordionItem value="item-1">
-                  <AccordionTrigger className="mx-2">
+                  <AccordionTrigger
+                    className={`mx-2 ${
+                      item.href === activeRoute ? "text-navbarHighlight" : ""
+                    }`}
+                  >
                     <div className="mx-2 flex font-semibold text-sm leading-5">
-                      <item.iconComponent className="mx-2 scale-75" />
+                      <item.iconComponent className={`mx-2 scale-75  `} />
                       <div>{item.name}</div>
                     </div>
                   </AccordionTrigger>
                   {item.dropdownItems &&
                     item.dropdownItems.map((item, i) => (
                       <AccordionContent
-                        className="mx-4 font-normal text-sm leading-5 "
+                        className={`mx-4 font-normal text-sm leading-5 `}
                         key={i}
                       >
-                        <Link href={item.href}>
+                        <Link
+                          href={item.href}
+                          onClick={() => {
+                            setActiveRoute(item.href);
+                          }}
+                        >
                           <Button
                             variant={"ghost"}
                             size={"sm"}
-                            className="w-full justify-start"
+                            className={`w-full justify-start  `}
                           >
                             {item.name}
                           </Button>
@@ -149,7 +159,13 @@ export const Sidebar: React.FC<Isidebar> = ({ children, ...props }) => {
             } w-full flex flex-col text-navbarForeground justify-start items-center gap-1 py-1  `}
           >
             {sideBarItems.map((item) => (
-              <Link href={item.href} key={item.name}>
+              <Link
+                href={item.href}
+                key={item.name}
+                className={`${
+                  item.href === activeRoute ? "text-navbarHighlight" : ""
+                } `}
+              >
                 <li className="flex flex-col justify-center items-center py-1 text-[12px] w-full my-4 mx">
                   <div className="scale-75">
                     <item.iconComponent />
