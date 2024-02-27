@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { logout } from "@/lib";
+import { logout } from "@/lib/lib";
 import { LogOut } from "lucide-react";
 
 export const SignOut = () => {

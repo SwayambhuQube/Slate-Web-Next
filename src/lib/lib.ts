@@ -2,7 +2,7 @@
 "use server";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
-import { validateToken } from "./utils/userValidation";
+import { validateToken } from "../utils/userValidation";
 import { redirect } from "next/navigation";
 
 /**

@@ -1,4 +1,4 @@
-import { refreshSession } from "@/lib";
+import { refreshSession } from "@/lib/lib";
 import { validateToken } from "@/utils/userValidation";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";

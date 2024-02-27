@@ -230,11 +230,11 @@ export const Sidebar: React.FC<Isidebar> = ({ children, ...props }) => {
                     <Info className="mx-1" />
                     <div>info</div>
                   </PopoverTrigger>
-                  <PopoverContent className="flex flex-col justify-start text-start w-fit h-fit p-0 border-0">
+                  <PopoverContent className="  flex flex-col justify-start text-start w-fit h-fit p-0 border border-solid border-border rounded-none ">
                     {InfoConfig.map((icon, i) => (
                       <Button
                         variant={"default"}
-                        className="text-navbarForeground font-semibold rounded-none "
+                        className="bg-navbar text-navbarForeground font-semibold rounded-none "
                         key={i}
                       >
                         {icon.icon}

@@ -1,4 +1,4 @@
-import { logout, refreshSession } from "@/lib";
+import { logout, refreshSession } from "@/lib/lib";
 import { validateToken } from "@/utils/userValidation";
 import { isEmpty } from "lodash";
 import { cookies } from "next/headers";

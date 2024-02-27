@@ -1,12 +1,12 @@
 "use client";
 
-import { useSlateDispatch, useSlateSelector } from "@/store/hooks";
-import { createQueryObject } from "@/utils/queryString";
+import { useDebounceCallback } from "@/customHooks/useDebounceCallback";
 import { assign } from "@/store/features/userSlice";
+import { useSlateDispatch } from "@/store/hooks";
+import { createQueryObject } from "@/utils/queryString";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { toast } from "sonner";
-import { useDebounceCallback } from "@/customHooks/useDebounceCallback";
 
 export default function Auth() {
   const router = useRouter();
@@ -24,6 +24,7 @@ export default function Auth() {
           });
           const userData = await _user.json();
           dispatch(assign(userData.data));
+          console.log("User data", userData.data);
           toast.success("You are now logged in!", {
             description: new Date().toLocaleString(),
           });

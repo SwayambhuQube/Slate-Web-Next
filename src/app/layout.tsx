@@ -23,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={isAdminApp ? "admin" : ""}>
+    <html lang="en" className={isAdminApp ? "" : "user"}>
       <body
         className={cn(
           "w-full h-full bg-background font-commissioner antialiased ",
