@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/twutils";
 import Providers from "@/providers";
 import type { Metadata } from "next";
 import { Commissioner } from "next/font/google";
@@ -26,7 +26,7 @@ export default function RootLayout({
     <html lang="en" className={isAdminApp ? "" : "user"}>
       <body
         className={cn(
-          "w-full h-full bg-background font-commissioner antialiased ",
+          "w-screen h-full bg-background font-commissioner antialiased ",
           commissioner.variable
         )}
       >

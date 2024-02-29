@@ -1,3 +1,4 @@
+import { EmptyPage } from "@/components/common/emptyPage/EmptyPage";
 import React from "react";
 
 interface Props {
@@ -6,7 +7,7 @@ interface Props {
 
 const MyComponent: React.FC<Props> = (props) => {
   // Implement your component logic here
-  return <div>{"Hi"}</div>;
+  return <EmptyPage heading={"adminAppHeading"} message={"noRolesHeading"} />;
 };
 
 export default MyComponent;

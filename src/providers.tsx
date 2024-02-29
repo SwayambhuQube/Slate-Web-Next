@@ -9,14 +9,14 @@ import { useSlateSelector } from "./store/hooks";
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <Provider store={store}>
-      {/* <NextThemesProvider
+      <NextThemesProvider
         attribute="class"
         defaultTheme="admin"
         enableSystem
         disableTransitionOnChange
-      > */}
-      {children}
-      {/* </NextThemesProvider> */}
+      >
+        {children}
+      </NextThemesProvider>
       <Toaster />
     </Provider>
   );

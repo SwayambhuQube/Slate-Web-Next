@@ -32,6 +32,7 @@ import {
   SlateLogo,
   SlateLogoSmall,
 } from "../../../../public/assets";
+import { usePathname } from "next/navigation";
 
 const InfoConfig = [
   {
@@ -58,7 +59,8 @@ interface Isidebar {
 export const Sidebar: React.FC<Isidebar> = ({ children, ...props }) => {
   const [onHover, setOnHover] = useState(false);
   const [isPinned, setIsPinned] = useState(false);
-  const [activeRoute, setActiveRoute] = useState("/");
+  const pathName = usePathname();
+  const [activeRoute, setActiveRoute] = useState(`/${pathName.split("/")[1]}`);
   const user = useSlateSelector((state) => state.user.value);
   const dispatch = useSlateDispatch();
 

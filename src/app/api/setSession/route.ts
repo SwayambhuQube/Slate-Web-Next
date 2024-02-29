@@ -1,15 +1,18 @@
-import { logout, refreshSession } from "@/lib/lib";
+import {
+  logout,
+  refreshSession,
+  storeUserInfoDataInCookies,
+} from "@/lib/authSession";
 import { validateToken } from "@/utils/userValidation";
 import { isEmpty } from "lodash";
-import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   const data = await request.json();
-  const allCookies = cookies();
   try {
     const user = await validateToken(data.access_token);
     if (!!user && !isEmpty(user)) {
+      await storeUserInfoDataInCookies(user);
       await refreshSession(data);
       return NextResponse.json({ data: user });
     } else {

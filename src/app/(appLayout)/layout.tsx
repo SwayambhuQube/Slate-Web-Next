@@ -10,7 +10,9 @@ export default function AppRootLayout({
       <Sidebar>
         <SignOut />
       </Sidebar>
-      <div className="w-fit h-full">{children}</div>
+      <div className="w-fit h-full" style={{ minWidth: "calc(100vw - 6rem)" }}>
+        {children}
+      </div>
     </div>
   );
 }
