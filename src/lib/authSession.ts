@@ -71,7 +71,7 @@ export async function logout(call: any = cookies()) {
   call.set("access_token", "", { expires: new Date(0) });
   call.set("revalidation", "", { expires: new Date(0) });
   call.set("session", "", { expires: new Date(0) });
-  redirect("/login");
+  // redirect("/login");
 }
 
 /**
@@ -88,12 +88,12 @@ export async function refreshSession(
   const revalidationExpires = new Date(Date.now() + 600 * 1000);
 
   //save the session in a cookie
-  await call.set("access_token", data.access_token, {
+  call.set("access_token", data.access_token, {
     expires,
     httpOnly: true,
     path: "/",
   });
-  await call.set("revalidation", "available", {
+  call.set("revalidation", "available", {
     expires: revalidationExpires,
     httpOnly: true,
     path: "/",

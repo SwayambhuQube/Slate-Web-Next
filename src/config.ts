@@ -27,7 +27,8 @@ const setCommonStagingConfig = () => {
   MOCK_SERVER_URL = "https://slate-mock-server.herokuapp.com/api/v1";
 };
 
-const env = process.env.REACT_APP_ENV || process.env.STORYBOOK_REACT_APP_ENV;
+const env =
+  process.env.NEXT_PUBLIC_REACT_APP_ENV || process.env.STORYBOOK_REACT_APP_ENV;
 
 switch (env) {
   case "local":
@@ -53,7 +54,7 @@ switch (env) {
     MOVIEBUFF_WEBSITE_URL = "https://www.moviebuff.com";
     break;
   default:
-    throw new Error("No value set for REACT_APP_ENV");
+    throw new Error("No value set for NEXT_PUBLIC_REACT_APP_ENV");
 }
 
 export {

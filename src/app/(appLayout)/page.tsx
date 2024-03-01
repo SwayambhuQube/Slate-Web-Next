@@ -7,7 +7,7 @@ interface Props {
 
 const MyComponent: React.FC<Props> = (props) => {
   // Implement your component logic here
-  return <EmptyPage heading={"adminAppHeading"} message={"noRolesHeading"} />;
+  return <div>hi</div>;
 };
 
 export default MyComponent;

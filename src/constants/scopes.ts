@@ -1,3 +1,5 @@
+import { type } from "os";
+
 const SCOPES = {
   __SELF__: "__SELF__", // Scope to skip checks for user's self routes like settings
   LOGS: "logs",
@@ -61,4 +63,6 @@ const SCOPE_ACTIONS = {
   IGNORE: "IGNORE",
 };
 
+export type SCOPE_ACTIONS_TYPES = keyof typeof SCOPE_ACTIONS;
+export type SCOPES_TYPES = keyof typeof SCOPES;
 export { SCOPES, SCOPE_ACTIONS };

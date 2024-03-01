@@ -26,13 +26,17 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { use, useCallback, useEffect, useMemo, useState } from "react";
 import {
   QubeLogoSmall,
   SlateLogo,
   SlateLogoSmall,
 } from "../../../../public/assets";
 import { usePathname } from "next/navigation";
+import checkScopeAuth from "@/utils/checkScopeAuth";
+import { SCOPES_TYPES, SCOPE_ACTIONS_TYPES } from "@/constants/scopes";
+import isSlateAdminCompanyUser from "@/utils/isSlateAdminCompanyUser";
+import { COMPANY_STATUS } from "@/constants";
 
 const InfoConfig = [
   {
@@ -70,6 +74,31 @@ export const Sidebar: React.FC<Isidebar> = ({ children, ...props }) => {
   const handleMouseLeave = () => {
     if (!isPinned) setOnHover(false);
   };
+
+  const shouldShowNavigationItems = useCallback(() => {
+    const isAdminApp = !!process.env.NEXT_PUBLIC_REACT_APP_IS_ADMIN_APP;
+    const isSlateAdminCompany = isSlateAdminCompanyUser(user);
+    const isApprovedCompany = user?.company?.status !== COMPANY_STATUS.PENDING;
+    return (
+      ((isAdminApp && isSlateAdminCompany) ||
+        (!isAdminApp && !isSlateAdminCompany)) &&
+      isApprovedCompany
+    );
+  }, [user]);
+
+  const protectedSidebarItems = useMemo(
+    () =>
+      sideBarItems.filter((d) =>
+        d.dropdownItems?.some((d) =>
+          checkScopeAuth(
+            user,
+            d.scope as SCOPES_TYPES,
+            d.scopeAction as SCOPE_ACTIONS_TYPES
+          )
+        )
+      ),
+    [user]
+  );
 
   useEffect(() => {
     const dispatchUserDataToStore = async () => {
@@ -109,75 +138,85 @@ export const Sidebar: React.FC<Isidebar> = ({ children, ...props }) => {
         </div>
         <div
           className="w-full   flex flex-col justify-items-start items-center overflow-y-scroll "
-          style={{ maxHeight: "calc(100vh - 200px)" }}
+          style={{
+            height: "calc(100vh - 200px)",
+            maxHeight: "calc(100vh - 200px)",
+          }}
         >
           <div
             className={`${
               onHover ? "" : "hidden"
             } w-full flex flex-col text-navbarForeground justify-start items-center gap-1 py-1`}
           >
-            {sideBarItems.map((item, i) => (
-              <Accordion key={i} type="single" collapsible className=" w-full">
-                <AccordionItem value="item-1">
-                  <AccordionTrigger
-                    className={`mx-2 ${
-                      item.href === activeRoute ? "text-navbarHighlight" : ""
-                    }`}
-                  >
-                    <div className="mx-2 flex font-semibold text-sm leading-5">
-                      <item.iconComponent className={`mx-2 scale-75  `} />
-                      <div>{item.name}</div>
-                    </div>
-                  </AccordionTrigger>
-                  {item.dropdownItems &&
-                    item.dropdownItems.map((item, i) => (
-                      <AccordionContent
-                        className={`mx-4 font-normal text-sm leading-5 `}
-                        key={i}
-                      >
-                        <Link
-                          href={item.href}
-                          onClick={() => {
-                            setActiveRoute(item.href);
-                          }}
+            {shouldShowNavigationItems() &&
+              protectedSidebarItems.map((item, i) => (
+                <Accordion
+                  key={i}
+                  type="single"
+                  collapsible
+                  className=" w-full"
+                >
+                  <AccordionItem value="item-1">
+                    <AccordionTrigger
+                      className={`mx-2 ${
+                        item.href === activeRoute ? "text-navbarHighlight" : ""
+                      }`}
+                    >
+                      <div className="mx-2 flex font-semibold text-sm leading-5">
+                        <item.iconComponent className={`mx-2 scale-75  `} />
+                        <div>{item.name}</div>
+                      </div>
+                    </AccordionTrigger>
+                    {item.dropdownItems &&
+                      item.dropdownItems.map((item, i) => (
+                        <AccordionContent
+                          className={`mx-4 font-normal text-sm leading-5 `}
+                          key={i}
                         >
-                          <Button
-                            variant={"ghost"}
-                            size={"sm"}
-                            className={`w-full justify-start  `}
+                          <Link
+                            href={item.href}
+                            onClick={() => {
+                              setActiveRoute(item.href);
+                            }}
                           >
-                            {item.name}
-                          </Button>
-                        </Link>
-                      </AccordionContent>
-                    ))}
-                </AccordionItem>
-              </Accordion>
-            ))}
+                            <Button
+                              variant={"ghost"}
+                              size={"sm"}
+                              className={`w-full justify-start  `}
+                            >
+                              {item.name}
+                            </Button>
+                          </Link>
+                        </AccordionContent>
+                      ))}
+                  </AccordionItem>
+                </Accordion>
+              ))}
           </div>
           <div
             className={`${
               onHover ? "hidden" : ""
             } w-full flex flex-col text-navbarForeground justify-start items-center gap-1 py-1  `}
           >
-            {sideBarItems.map((item) => (
-              <Link
-                href={item.href}
-                key={item.name}
-                className={`${
-                  item.href === activeRoute ? "text-navbarHighlight" : ""
-                } `}
-              >
-                <li className="flex flex-col justify-center items-center py-1 text-[12px] w-full my-4 mx">
-                  <div className="scale-75">
-                    <item.iconComponent />
-                  </div>
-                  <div className="font-normal text-sm leading-5">
-                    {item.name}
-                  </div>
-                </li>
-              </Link>
-            ))}
+            {shouldShowNavigationItems() &&
+              protectedSidebarItems.map((item) => (
+                <Link
+                  href={item.href}
+                  key={item.name}
+                  className={`${
+                    item.href === activeRoute ? "text-navbarHighlight" : ""
+                  } `}
+                >
+                  <li className="flex flex-col justify-center items-center py-1 text-[12px] w-full my-4 mx">
+                    <div className="scale-75">
+                      <item.iconComponent />
+                    </div>
+                    <div className="font-normal text-sm leading-5">
+                      {item.name}
+                    </div>
+                  </li>
+                </Link>
+              ))}
           </div>
         </div>
         <div className="h-24 w-full bg-navbar border-border border-solid border-t">
