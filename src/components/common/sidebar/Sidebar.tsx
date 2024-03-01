@@ -90,11 +90,7 @@ export const Sidebar: React.FC<Isidebar> = ({ children, ...props }) => {
     () =>
       sideBarItems.filter((d) =>
         d.dropdownItems?.some((d) =>
-          checkScopeAuth(
-            user,
-            d.scope as SCOPES_TYPES,
-            d.scopeAction as SCOPE_ACTIONS_TYPES
-          )
+          checkScopeAuth(user, d.scope, d.scopeAction)
         )
       ),
     [user]

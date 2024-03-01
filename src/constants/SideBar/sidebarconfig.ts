@@ -16,7 +16,12 @@ export const sideBarItems = [
     iconComponent: CalendarCheck,
     href: "/schedules",
     dropdownItems: [
-      { name: "Schedule Orders", href: "/schedules", scope: SCOPES.SCHEDULES },
+      {
+        name: "Schedule Orders",
+        href: "/schedules",
+        scope: SCOPES.SCHEDULES,
+        scopeAction: undefined,
+      },
     ],
   },
   {
@@ -28,6 +33,7 @@ export const sideBarItems = [
         name: "Compositions",
         href: "/composition",
         scope: SCOPES.COMPOSITIONS,
+        scopeAction: undefined,
       },
     ],
   },
@@ -36,16 +42,23 @@ export const sideBarItems = [
     iconComponent: Megaphone,
     href: "/campaigns",
     dropdownItems: [
-      { name: "Campaigns", href: "/campaigns", scope: SCOPES.CAMPAIGNS },
+      {
+        name: "Campaigns",
+        href: "/campaigns",
+        scope: SCOPES.CAMPAIGNS,
+        scopeAction: undefined,
+      },
       {
         name: "Campaign Reports",
         href: "/campaign-reports",
         scope: SCOPES.CAMPAIGNS,
+        scopeAction: undefined,
       },
       {
         name: "Show Failure",
         href: "/show-failure",
         scope: SCOPES.CAMPAIGNS,
+        scopeAction: undefined,
       },
     ],
   },
@@ -68,6 +81,7 @@ export const sideBarItems = [
         name: "Brand Verifications",
         href: "/brand-verification",
         scope: SCOPES.BRAND_VERIFICATIONS,
+        scopeAction: undefined,
       },
     ],
   },
@@ -80,12 +94,19 @@ export const sideBarItems = [
         name: "Unmapped CPLs",
         href: "/unmapped-cpls",
         scope: SCOPES.CPL_MAPPINGS,
+        scopeAction: undefined,
       },
-      { name: "Content", href: "/content", scope: SCOPES.CONTENT },
+      {
+        name: "Content",
+        href: "/content",
+        scope: SCOPES.CONTENT,
+        scopeAction: undefined,
+      },
       {
         name: "Archived Content",
         href: "/archived-content",
         scope: SCOPES.CONTENT,
+        scopeAction: undefined,
       },
     ],
   },
@@ -94,11 +115,17 @@ export const sideBarItems = [
     iconComponent: Database,
     href: "/inventory",
     dropdownItems: [
-      { name: "Theaters/Screen", href: "/theaters", scope: SCOPES.INVENTORY },
+      {
+        name: "Theaters/Screen",
+        href: "/theaters",
+        scope: SCOPES.INVENTORY,
+        scopeAction: undefined,
+      },
       {
         name: "Playlist Templates",
         href: "/playlist-templates",
         scope: SCOPES.PLAYLIST_TEMPLATES,
+        scopeAction: undefined,
       },
     ],
   },
@@ -107,8 +134,18 @@ export const sideBarItems = [
     iconComponent: Building2,
     href: "/companies",
     dropdownItems: [
-      { name: "Sellers", href: "/sellers", scope: SCOPES.COMPANIES_MANAGE },
-      { name: "Buyers", href: "/buyers", scope: SCOPES.BUYERS },
+      {
+        name: "Sellers",
+        href: "/sellers",
+        scope: SCOPES.COMPANIES_MANAGE,
+        scopeAction: undefined,
+      },
+      {
+        name: "Buyers",
+        href: "/buyers",
+        scope: SCOPES.BUYERS,
+        scopeAction: undefined,
+      },
     ],
   },
   {
@@ -118,14 +155,31 @@ export const sideBarItems = [
     dropdownItems: [
       { name: "RateCards", href: "/rate-card" },
       { name: "Premiums", href: "/premiums" },
-      { name: "Brands", href: "/brands", scope: SCOPES.BRANDS },
-      { name: "Movies", href: "/movies", scope: SCOPES.MOVIES },
+      {
+        name: "Brands",
+        href: "/brands",
+        scope: SCOPES.BRANDS,
+        scopeAction: undefined,
+      },
+      {
+        name: "Movies",
+        href: "/movies",
+        scope: SCOPES.MOVIES,
+        scopeAction: undefined,
+      },
     ],
   },
   {
     name: "Other",
     iconComponent: Newspaper,
     href: "/other",
-    dropdownItems: [{ name: "Lists", href: "/lists", scope: SCOPES.LISTS }],
+    dropdownItems: [
+      {
+        name: "Lists",
+        href: "/lists",
+        scope: SCOPES.LISTS,
+        scopeAction: undefined,
+      },
+    ],
   },
 ];

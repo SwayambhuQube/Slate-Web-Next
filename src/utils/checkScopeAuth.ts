@@ -13,7 +13,7 @@ import { SCOPES_TYPES, SCOPE_ACTIONS_TYPES } from "@/constants/scopes";
 const checkScopeAuth = (
   user: any,
   scope?: SCOPES_TYPES | undefined,
-  scopeAction?: SCOPE_ACTIONS_TYPES
+  scopeAction?: SCOPE_ACTIONS_TYPES | undefined
 ): boolean => {
   // Invalid case if no user or scope passed.
   // Likely a bug, return unauthorised just to be safe and not show/allow something the user might not have access to.
