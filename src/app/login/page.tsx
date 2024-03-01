@@ -14,6 +14,7 @@ export async function login(redirect: (url: string) => void) {
   redirect(url);
 }
 export default function Login() {
+  const isAddminApp = !!process.env.NEXT_PUBLIC_REACT_APP_IS_ADMIN_APP;
   return (
     <form
       action={async () => {
@@ -22,7 +23,11 @@ export default function Login() {
       }}
     >
       <button
-        className="min-h-12 min-w-[310px] text-white bg-[#052f66] p-4 rounded-lg mx-2"
+        className={`min-h-12 ${
+          isAddminApp
+            ? "min-w-[310px] bg-[#052f66]"
+            : "max-w-[80px] bg-[#e6ecf3] text-[#052f66] my-2"
+        } text-white  p-2 rounded-lg mx-2`}
         type="submit"
       >
         Sign in
