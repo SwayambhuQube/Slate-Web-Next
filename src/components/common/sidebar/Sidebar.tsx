@@ -88,11 +88,15 @@ export const Sidebar: React.FC<Isidebar> = ({ children, ...props }) => {
 
   const protectedSidebarItems = useMemo(
     () =>
-      sideBarItems.filter((d) =>
-        d.dropdownItems?.some((d) =>
-          checkScopeAuth(user, d.scope, d.scopeAction)
-        )
-      ),
+      sideBarItems
+        .map((d: any) => {
+          const item = { ...d };
+          item.dropdownItems = item.dropdownItems?.filter((i: any) =>
+            checkScopeAuth(user, i.scope, i.scopeAction)
+          );
+          return item;
+        })
+        .filter((d: any) => d.dropdownItems?.length > 0),
     [user]
   );
 
@@ -164,7 +168,7 @@ export const Sidebar: React.FC<Isidebar> = ({ children, ...props }) => {
                       </div>
                     </AccordionTrigger>
                     {item.dropdownItems &&
-                      item.dropdownItems.map((item, i) => (
+                      item.dropdownItems.map((item: any, i: number) => (
                         <AccordionContent
                           className={`mx-4 font-normal text-sm leading-5 `}
                           key={i}

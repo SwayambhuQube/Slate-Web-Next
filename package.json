@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "NEXT_PUBLIC_REACT_APP_ENV=local next dev --turbo",
-    "admin:dev": "NEXT_PUBLIC_REACT_APP_ENV=local NEXT_PUBLIC_REACT_APP_IS_ADMIN_APP=1 next dev --turbo",
+    "dev": "NEXT_PUBLIC_REACT_APP_ENV=local NEXT_PUBLIC_REACT_APP_IS_ADMIN_APP=1 next dev --turbo",
+    "user:dev": "NEXT_PUBLIC_REACT_APP_ENV=local next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

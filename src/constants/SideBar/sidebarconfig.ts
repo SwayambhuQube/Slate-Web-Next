@@ -70,6 +70,8 @@ export const sideBarItems = [
       {
         name: "Media Rights Approvals",
         href: "/campaign-approval",
+        scope: undefined,
+        scopeAction: undefined,
       },
       {
         name: "Campaign Approvals",
@@ -153,8 +155,18 @@ export const sideBarItems = [
     iconComponent: BookImage,
     href: "/catalogue",
     dropdownItems: [
-      { name: "RateCards", href: "/rate-card" },
-      { name: "Premiums", href: "/premiums" },
+      {
+        name: "RateCards",
+        href: "/rate-card",
+        scope: undefined,
+        scopeAction: undefined,
+      },
+      {
+        name: "Premiums",
+        href: "/premiums",
+        scope: undefined,
+        scopeAction: undefined,
+      },
       {
         name: "Brands",
         href: "/brands",
