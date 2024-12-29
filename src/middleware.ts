@@ -1,7 +1,7 @@
 import { isEmpty } from "lodash";
 import { NextRequest, NextResponse } from "next/server";
 import { COMPANY_STATUS, CUSTOMER_SEGMENT } from "./constants";
-import { Message } from "./constants/EmptyPage/messagetypes";
+import { Message } from "./constants/emptyPage/messagetypes";
 import {
   getSession,
   logout,

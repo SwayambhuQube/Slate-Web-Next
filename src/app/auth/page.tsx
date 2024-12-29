@@ -12,24 +12,24 @@ export default function Auth() {
   const router = useRouter();
   const dispatch = useSlateDispatch();
 
-  const loginCapture = () => {
+  const loginCapture = async () => {
     if (typeof window !== "undefined") {
       const queryParams = window.location.href.replace("#", "?").split("?")[1];
       const params = createQueryObject(queryParams);
       const storeParamsInCookie = async () => {
-        try {
-          const _user = await fetch("api/setSession", {
-            method: "POST",
-            body: JSON.stringify(params),
-          });
-          const userData = await _user.json();
-          dispatch(assign(userData.data));
-          console.log("User data", userData.data);
+        const _user = await fetch("api/setSession", {
+          method: "POST",
+          body: JSON.stringify(params),
+        });
+        console.log("User data", _user);
+        const userData = await _user.json();
+        dispatch(assign(userData.data));
+        if (userData.data) {
           toast.success("You are now logged in!", {
             description: new Date().toLocaleString(),
           });
           router.push("/");
-        } catch (e) {
+        } else {
           toast.error("Login failed. Please try again.");
           router.push("/login");
         }

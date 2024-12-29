@@ -12,7 +12,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { sideBarItems } from "@/constants/SideBar/sidebarconfig";
+import { sideBarItems } from "@/constants/sideBar/sidebarconfig";
 import { useSlateDispatch, useSlateSelector } from "@/store/hooks";
 import { isEmpty } from "lodash";
 import { assign } from "@/store/features/userSlice";
@@ -37,6 +37,7 @@ import checkScopeAuth from "@/utils/checkScopeAuth";
 import { SCOPES_TYPES, SCOPE_ACTIONS_TYPES } from "@/constants/scopes";
 import isSlateAdminCompanyUser from "@/utils/isSlateAdminCompanyUser";
 import { COMPANY_STATUS } from "@/constants";
+import { Loading } from "../utils/Loading";
 
 const InfoConfig = [
   {
@@ -101,6 +102,7 @@ export const Sidebar: React.FC<Isidebar> = ({ children, ...props }) => {
   );
 
   useEffect(() => {
+    console.log("user", user);
     const dispatchUserDataToStore = async () => {
       if (isEmpty(user)) {
         const user = await fetch("api/validateUser");
@@ -113,7 +115,7 @@ export const Sidebar: React.FC<Isidebar> = ({ children, ...props }) => {
 
   return (
     <div
-      className="h-full min-h-screen"
+      className={`h-full min-h-screen z-20  ${isPinned ? "" : "w-24"}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -219,6 +221,7 @@ export const Sidebar: React.FC<Isidebar> = ({ children, ...props }) => {
               ))}
           </div>
         </div>
+
         <div className="h-24 w-full bg-navbar border-border border-solid border-t">
           <div
             className={` w-full flex flex-col text-navbarForeground justify-start items-center gap-2 py-2 ${

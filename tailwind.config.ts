@@ -34,6 +34,8 @@ const config = {
         navbarHighlight: "hsl(var(--navbar-highlight))",
 
         qube: "hsl(var(--qube))",
+        textHeading: "hsl(var(--text-heading))",
+        borderTable: "hsl(var(--border-table))",
 
         primary: {
           DEFAULT: "hsl(var(--primary))",

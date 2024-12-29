@@ -26,7 +26,7 @@ export default function Login() {
         className={`min-h-12 ${
           isAddminApp
             ? "min-w-[310px] bg-[#052f66]"
-            : "max-w-[80px] bg-[#e6ecf3] text-[#052f66] my-2"
+            : "max-w-[80px] bg-[#1b3b65] text-[#052f66] my-2"
         } text-white  p-2 rounded-lg mx-2`}
         type="submit"
       >

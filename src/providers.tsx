@@ -1,10 +1,9 @@
 "use client";
 
-import { store } from "@/store/store";
 import { Toaster } from "@/components/ui/sonner";
-import { Provider } from "react-redux";
+import { store } from "@/store/store";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
-import { useSlateSelector } from "./store/hooks";
+import { Provider } from "react-redux";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (

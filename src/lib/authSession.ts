@@ -1,17 +1,14 @@
 /* eslint-disable camelcase */
 "use server";
+import { userInfoExtract } from "@/utils/extractInfoFromUserObject";
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import { validateToken } from "../utils/userValidation";
-import { redirect } from "next/navigation";
-import { userInfoExtract } from "@/utils/extractInfoFromUserObject";
-import { CUSTOMER_SEGMENT } from "@/constants";
-import { isEmpty } from "lodash";
 
 const secretKey = process.env.key;
 const key = new TextEncoder().encode(secretKey);
-
+const secondToStoreCookies = 90000;
 /**
  * Encrypts the given payload using JWT.
  * @param payload - The data to be encrypted.
@@ -21,7 +18,7 @@ export async function encrypt(payload: any) {
   return await new SignJWT(payload)
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
-    .setExpirationTime("900 sec from now")
+    .setExpirationTime(`${secondToStoreCookies} sec from now`)
     .sign(key);
 }
 
@@ -49,7 +46,7 @@ export async function storeUserInfoDataInCookies(
   const session = await encrypt(userInfoExtract(user));
   call.set("session", session, {
     httpOnly: true,
-    expires: new Date(Date.now() + 900 * 1000),
+    expires: new Date(Date.now() + secondToStoreCookies * 1000),
   });
 }
 
@@ -84,8 +81,8 @@ export async function refreshSession(
   data: any,
   call: any = cookies()
 ): Promise<void> {
-  const expires = new Date(Date.now() + 900 * 1000);
-  const revalidationExpires = new Date(Date.now() + 600 * 1000);
+  const expires = new Date(Date.now() + secondToStoreCookies * 1000);
+  const revalidationExpires = new Date(Date.now() + 6000 * 1000);
 
   //save the session in a cookie
   call.set("access_token", data.access_token, {
@@ -133,5 +130,5 @@ export async function updateSession(request: NextRequest) {
 export async function serverSideUserValidation(request: NextRequest) {
   const res = NextResponse.next();
 
-  // return res;
+  return res;
 }

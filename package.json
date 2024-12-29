@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "NEXT_PUBLIC_REACT_APP_ENV=local NEXT_PUBLIC_REACT_APP_IS_ADMIN_APP=1 next dev --turbo",
-    "user:dev": "NEXT_PUBLIC_REACT_APP_ENV=local next dev --turbo",
+    "admin": "NEXT_PUBLIC_REACT_APP_ENV=local NEXT_PUBLIC_REACT_APP_IS_ADMIN_APP=1 next dev --turbo",
+    "user": "NEXT_PUBLIC_REACT_APP_ENV=local next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -12,9 +12,12 @@
   "dependencies": {
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-avatar": "^1.0.4",
+    "@radix-ui/react-checkbox": "^1.0.4",
+    "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@radix-ui/react-popover": "^1.0.7",
     "@radix-ui/react-slot": "^1.0.2",
     "@reduxjs/toolkit": "^1.9.3",
+    "@tanstack/react-table": "^8.13.2",
     "@types/react-table": "^7.7.16",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",

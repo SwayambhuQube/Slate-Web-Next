@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { EmptyState } from "../../../../public/assets";
-import { MessageType } from "../../../constants/EmptyPage/messagetypes";
+import { MessageType } from "../../../constants/emptyPage/messagetypes";
 
 // type Message = (typeof MessageType)[keyof typeof MessageType];
 interface EmptyPageProps {

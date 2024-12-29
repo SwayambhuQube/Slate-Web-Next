@@ -9,6 +9,12 @@ import {
   useSortBy,
   useTable,
 } from "react-table";
+import {
+  useReactTable,
+  getCoreRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+} from "@tanstack/react-table";
 
 export interface PaginationProps {
   canPreviousPage: boolean;
@@ -16,13 +22,13 @@ export interface PaginationProps {
   pageCount: number;
 }
 export interface ColumnProps {
-  Headers: any;
-  accessor: string;
+  Header: any;
+  accessor: string | ((item: any) => any);
   isSearchable?: boolean;
 }
 interface TableProps {
   data: Object[];
-  columns: Column<ColumnProps>[];
+  columns: ColumnProps[];
   sortable?: boolean;
   loading?: boolean;
   resizable?: boolean;
@@ -55,8 +61,8 @@ export const Table = ({
   const defaultColumn = useMemo(
     () => ({
       minWidth: 30,
-      width: 90,
-      maxWidth: 100,
+      width: 200,
+      maxWidth: 200,
     }),
     []
   );
@@ -104,7 +110,7 @@ export const Table = ({
   return (
     <>
       <div className={"p-6 bg-[#f5f8fa]"}>
-        <div className=" text-xs block overflow-auto leading-6 ">
+        <div className=" text-xs block overflow-auto overflow-x-scroll leading-6 ">
           <div {...getTableProps()} className=" w-full border-spacing-0">
             <div className="w-full border-spacing-0 overflow-hidden">
               {headerGroups.map((headerGroup: HeaderGroup, i: number) => (
@@ -189,7 +195,7 @@ export const Table = ({
                 </div>
               ))}
             </div>
-            <div className="max-h-[calc(100vh-200px)] w-full  overflow-y-scroll overflow-hidden font-normal border-b-solid border-b-[1px] border-[#cfdce6]  ">
+            <div className="max-h-[calc(100%-200px)] w-full  overflow-y-scroll overflow-hidden font-normal border-b-solid border-b-[1px] border-[#cfdce6]  ">
               <div
                 {...getTableBodyProps()}
                 className="border-b-solid border-b-[1px] border-[#cfdce6] w-full"

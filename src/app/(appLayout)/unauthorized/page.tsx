@@ -1,5 +1,5 @@
 import { EmptyPage } from "@/components/common/emptyPage/EmptyPage";
-import { Message } from "@/constants/EmptyPage/messagetypes";
+import { Message } from "@/constants/emptyPage/messagetypes";
 import React from "react";
 
 const MyComponent = ({
